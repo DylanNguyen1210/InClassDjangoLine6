@@ -1,0 +1,3 @@
+"""
+Package for InClassDjangoLine6.
+"""
