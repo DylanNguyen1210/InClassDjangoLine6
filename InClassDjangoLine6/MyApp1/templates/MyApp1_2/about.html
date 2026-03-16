@@ -1,0 +1,31 @@
+{% extends 'navigation/navigation.html' %}
+<html>
+<head>
+    <title>Contacts</title>
+</head>
+
+<body>
+
+    <strong>Contacts</strong>
+
+    {% if content %}
+    <table>
+        <tr>
+            <th> Name </th>
+            <th>Social Media</th>
+        </tr>
+        {% for teach in content%}
+        <tr>
+            <td>
+                {{contact.SocialMedia}}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <strong>No data!!</strong>
+    {% endif %}
+
+
+</body>
+</html>
