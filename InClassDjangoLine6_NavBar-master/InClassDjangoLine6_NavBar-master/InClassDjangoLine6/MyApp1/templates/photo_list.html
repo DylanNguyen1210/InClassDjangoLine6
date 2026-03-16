@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <h1>Uploaded Photos</h1>
+    <a href="{% url 'upload_photo'%}">Upload New Photo</a>
+    <ul>
+        {% for photo in photos %}
+        <li>
+            <h2>{{ photo.title }}</h2>
+            <img src="{{ photo.image.url }}" alt="{{ photo.title }}" style="max-width"
+            <p>Uploaded at {{ photo.uploaded_at }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

@@ -64,6 +64,8 @@
     <Content Include="MyApp1\templates\dashboard.html" />
     <Content Include="MyApp1\templates\registration\login.html" />
     <Content Include="MyApp1\templates\input.html" />
+    <Content Include="MyApp1\templates\photo_list.html" />
+    <Content Include="MyApp1\templates\upload_photo.html" />
     <Content Include="requirements.txt" />
   </ItemGroup>
   <ItemGroup>
