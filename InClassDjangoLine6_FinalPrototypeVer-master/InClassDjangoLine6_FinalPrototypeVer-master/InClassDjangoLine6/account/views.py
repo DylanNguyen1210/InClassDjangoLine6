@@ -1,8 +1,10 @@
+from cmath import log
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from django.contrib.auth.models import User
+from django.contrib.auth import logout
 
 @login_required
 def dashboard_view(request):
@@ -36,5 +38,8 @@ def register_view(request):
                 password=password
             )
             return redirect("login")
-
     return render(request, "registration/register.html")
+
+def custom_logout(request):
+    logout(request)
+    return redirect('index')

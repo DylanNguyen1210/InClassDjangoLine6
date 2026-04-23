@@ -21,13 +21,11 @@
         <div class="navbar-nav ms-auto">
             <a class="btn" href="{% url 'upload' %}">Upload Something? </a>
             
-            <a href="{% url 'home' %}">Home</a>
-           
-            <a href="{% url 'login' %}">Login</a>
+            <a class="btn" href="{% url 'home' %}">Home</a>
+                       
+            <a class="btn" href="{% url 'input' %}"> Add Teacher</a>
             
-            <a href="{% url 'input' %}"> Add Teacher</a>
-            
-            <a href="{% url 'register' %}"> Sign Up</a>
+            <a class="btn" href="{% url 'register' %}"> Sign Up</a>
         </div>
     </div>
 </nav>
@@ -40,6 +38,16 @@
 <body>
     <p>Logged in as: {{request.user.username}} </p>
     <strong>Teachers</strong>
+    {% if user.is_authenticated %}
+    <p>Hello, {{user.username}}</p>
+    <form action="={% url 'register' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
+    {% else %}
+    <a href="{% url 'login' %}"> Login </a>
+    {% endif %}
+
 
     {% if content %}
     <table>
@@ -57,6 +65,8 @@
     {% else %}
     <strong>No data!!</strong>
     {% endif %}
+
+
 </body>
 </html>
 
