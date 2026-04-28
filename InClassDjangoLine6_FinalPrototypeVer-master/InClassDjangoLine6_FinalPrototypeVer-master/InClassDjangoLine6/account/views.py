@@ -42,4 +42,4 @@ def register_view(request):
 
 def custom_logout(request):
     logout(request)
-    return redirect('index')
+    return redirect("index")

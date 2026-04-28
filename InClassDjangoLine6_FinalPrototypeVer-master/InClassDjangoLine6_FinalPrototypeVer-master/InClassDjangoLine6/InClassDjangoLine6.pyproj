@@ -73,6 +73,8 @@
     <Folder Include="account\" />
     <Folder Include="account\migrations\" />
     <Folder Include="InClassDjangoLine6\" />
+    <Folder Include="media\" />
+    <Folder Include="media\uploads\" />
     <Folder Include="MyApp1\" />
     <Folder Include="MyApp1\migrations\" />
     <Folder Include="MyApp1\static\" />
