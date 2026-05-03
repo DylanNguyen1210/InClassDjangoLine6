@@ -66,7 +66,6 @@
     <Content Include="MyApp1\templates\input.html" />
     <Content Include="MyApp1\templates\registration\register.html" />
     <Content Include="MyApp1\templates\upload_success.html" />
-    <Content Include="MyApp1\templates\upload.html" />
     <Content Include="requirements.txt" />
   </ItemGroup>
   <ItemGroup>

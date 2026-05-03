@@ -17,8 +17,7 @@ def index(request):
 
 @login_required
 def home(request):
-    files = UploadFile.objects.filter(user=request.user) #show only the current user stuff
-    return render(request, "MyApp1/home.html", {"files" : files})
+    return render(request, "MyApp1/home.html")
 
 @login_required
 def input_view(request):
@@ -36,10 +35,13 @@ def upload_file(request):
     if request.method == "POST":
         form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
-            document = form.save(commit=FALSE)
+            document = form.save(commit=False)
             document.user = request.user
             document.save()
-            return render(request, "upload_success.html", {'document': document})
+
+            all_images = UploadFile.objects.filter(user=request.user)
+
+            return render(request, "upload_success.html", {'document': document, 'files': all_images})
     else:
         form = UploadFileForm()
     return render(request, "upload.html", {'form': form})

@@ -2,4 +2,13 @@
 <p>Your file has been uploaded.</p>
 <p> {{ document.title }}</p>
 <p>File:  <img src="{{ document.file.url}}" width="300" /><p>
+
+
+<h3>All Uploaded Images</h3>
+
+{% for f in files %}
+<p>{{ f.title }}</p>
+<img src="{{ f.file.url }}" width="300">
+{% endfor %}
+
 <p> <a href="{% url 'upload' %}">Upload More</a></p>
