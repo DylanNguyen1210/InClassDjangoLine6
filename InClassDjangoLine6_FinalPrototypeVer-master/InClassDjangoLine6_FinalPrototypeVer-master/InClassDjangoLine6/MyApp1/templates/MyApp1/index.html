@@ -26,6 +26,7 @@
             <a class="btn" href="{% url 'input' %}"> Add Teacher</a>
             
             <a class="btn" href="{% url 'register' %}"> Sign Up</a>
+
         </div>
     </div>
 </nav>
@@ -65,7 +66,7 @@
     {% else %}
     <strong>No data!!</strong>
     {% endif %}
-
+    <p><a href="{% url 'report'%}">Download PDF</a></p>
 
 </body>
 </html>
