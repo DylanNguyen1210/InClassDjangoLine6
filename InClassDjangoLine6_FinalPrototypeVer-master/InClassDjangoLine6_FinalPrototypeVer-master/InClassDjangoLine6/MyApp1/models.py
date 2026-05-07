@@ -1,4 +1,5 @@
 from pickle import TRUE
+from unicodedata import category
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -6,6 +7,9 @@ from django.contrib.auth.models import User
 class teacher(models.Model):
     Name = models.CharField(max_length=25)
     Area = models.CharField(max_length=30)
+
+class Category(models.Model):
+    name = models.CharField(max_length=50)
 
 class UploadFile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=TRUE)

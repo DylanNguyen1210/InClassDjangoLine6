@@ -36,7 +36,8 @@ urlpatterns = [
     path('input', MyApp1.views.input_view, name='input'),
     path('register', account.views.register_view, name='register'),
     path('upload', MyApp1.views.upload_file, name='upload'),
-    path('report/', MyApp1.views.report, name="report")
+    path('report/', MyApp1.views.report, name="report"),
+    path('about', MyApp1.views.about_view, name="about")
 ] 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

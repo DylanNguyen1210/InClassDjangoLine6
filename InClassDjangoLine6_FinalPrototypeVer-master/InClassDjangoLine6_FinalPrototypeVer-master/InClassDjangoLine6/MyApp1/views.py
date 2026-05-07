@@ -11,7 +11,6 @@ from django.contrib.auth.decorators import login_required
 from .models import UploadFile
 
 
-
 #PDF
 from pypdf import PdfWriter, PdfReader
 from reportlab.pdfgen import canvas
@@ -96,3 +95,5 @@ def generate_pdf():
 
     buffer.seek(0)
     return buffer
+def about_view(request):
+    return render(request,"MyApp1/about.html")
