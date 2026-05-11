@@ -1,33 +1,23 @@
-{% extends "MyApp1/index.html" %}
-
 <!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-    <title>This is homepage</title>
+    <title>Courses</title>
 </head>
 <body>
-    <strong>Teachers</strong>
-
-    {% if content %}
-    <p> {{ content }} </p>
-    <table>
-        <tr>
-            <th> Name </th>
-            <th>Teaching Area</th>
-        </tr>
-        {% for teach in content%}
-        <tr>
-            <td>{{teach.Name}}</td>
-            <td>{{teach.Area}}</td>
-        </tr>
-        {% endfor %}
-    </table>
-    {% else %}
-    <strong>No data!!</strong>
-    {% endif %}
-
-
+    {% for c in courses %}
+    <h2>{{c.name}}</h2>
+    <div style="display:flex; flex-wrap:wrap; gap:20px">
+        {% for f in files %}
+            {% if f.courses == c %}
+            <div style="border: 1px solid black; padding:10px">
+                <img src="{{f.file.url}}" width="150" />
+                <p>{{f.title}}</p>
+            </div>
+        {% endif %}
+    {% endfor %}
+    </div>
+    {% endfor %}
 </body>
 </html>

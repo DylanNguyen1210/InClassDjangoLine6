@@ -10,4 +10,4 @@ class InputForm(forms.ModelForm):
 class UploadFileForm(forms.ModelForm):
     class Meta:
         model = UploadFile
-        fields = ['title', 'file']
+        fields = ['category','title', 'file']

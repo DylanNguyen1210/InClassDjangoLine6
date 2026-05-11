@@ -8,7 +8,7 @@ from .models import teacher
 from .forms import InputForm
 from .forms import UploadFileForm
 from django.contrib.auth.decorators import login_required
-from .models import UploadFile
+from .models import UploadFile, Category
 
 
 #PDF
@@ -26,7 +26,9 @@ def index(request):
 
 @login_required
 def home(request):
-    return render(request, "MyApp1/home.html")
+    category = Category.objects.all()
+    files = UploadFile.objects.filter(user=request.user)
+    return render(request, "MyApp1/home.html", { 'category': category, 'files':files})
 
 @login_required
 def input_view(request):
@@ -47,10 +49,9 @@ def upload_file(request):
             document = form.save(commit=False)
             document.user = request.user
             document.save()
-
-            all_images = UploadFile.objects.filter(user=request.user)
-
-            return render(request, "upload_success.html", {'document': document, 'files': all_images})
+        return redirect('home')
+            #all_images = UploadFile.objects.filter(user=request.user)
+            #return render(request, "upload_success.html", {'document': document, 'files': all_images})
     else:
         form = UploadFileForm()
     return render(request, "upload.html", {'form': form})

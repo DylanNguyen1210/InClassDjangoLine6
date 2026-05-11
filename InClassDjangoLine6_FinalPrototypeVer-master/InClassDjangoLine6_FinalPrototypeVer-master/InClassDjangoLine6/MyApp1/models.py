@@ -13,5 +13,9 @@ class Category(models.Model):
 
 class UploadFile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=TRUE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=TRUE)
     title = models.CharField(max_length=20)
     file = models.FileField(upload_to='uploads/')
+
+    def __str__(self):
+        return self.name
