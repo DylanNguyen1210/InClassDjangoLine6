@@ -1,22 +1,53 @@
 <!DOCTYPE html>
-
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
+
     <meta charset="utf-8" />
     <title>Courses</title>
+    <style>
+        div.gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+        }
+
+        div.gallery-item {
+            margin: 5px;
+            border: 1px solid #ccc;
+            width: 180px;
+        }
+
+            div.gallery-item:hover {
+                border: 1px solid #777;
+            }
+
+            div.gallery-item img {
+                width: 100%;
+                height: auto;
+            }
+
+            div.gallery-item div.desc {
+                padding: 15px;
+                text-align: center;
+            }
+    </style>
 </head>
 <body>
-    {% for c in courses %}
+    {% for c in category %}
     <h2>{{c.name}}</h2>
-    <div style="display:flex; flex-wrap:wrap; gap:20px">
-        {% for f in files %}
-            {% if f.courses == c %}
-            <div style="border: 1px solid black; padding:10px">
-                <img src="{{f.file.url}}" width="150" />
-                <p>{{f.title}}</p>
+    <div class="gallery">
+        <div class="gallery-item">
+            <div style="display:flex; flex-wrap:wrap; gap:20px">
+                {% for f in files %}
+                {% if f.category == c %}
+                <div style="border: 1px solid black; padding:10px">
+                    <p>{{f.title}}</p>
+                    <img src="{{f.file.url}}" width="150" />
+                </div>
+                {% endif %}
+                {% endfor %}
             </div>
-        {% endif %}
-    {% endfor %}
+        </div>
     </div>
     {% endfor %}
 </body>
