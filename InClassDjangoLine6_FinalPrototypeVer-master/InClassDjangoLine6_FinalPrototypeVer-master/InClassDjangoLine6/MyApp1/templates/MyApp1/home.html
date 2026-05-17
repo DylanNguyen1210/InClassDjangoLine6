@@ -33,22 +33,42 @@
     </style>
 </head>
 <body>
-    {% for c in category %}
-    <h2>{{c.name}}</h2>
-    <div class="gallery">
-        <div class="gallery-item">
-            <div style="display:flex; flex-wrap:wrap; gap:20px">
-                {% for f in files %}
-                {% if f.category == c %}
-                <div style="border: 1px solid black; padding:10px">
-                    <p>{{f.title}}</p>
-                    <img src="{{f.file.url}}" width="150" />
+    <h1>My Subjects</h1>
+
+    <div style="display:flex; gap:30px; flex-wrap:wrap;">
+
+        {% for c in category %}
+
+        <a href="{% url 'category' c.id %}"
+           style="text-decoration:none; color:black;">
+
+            <div style="
+            width:200px;
+            padding:20px;
+            border:1px solid gray;
+            text-align:center;
+        ">
+                <img src="/static/images/folder.png"
+                     width="100">
+
+                <h2>{{ c.name }}</h2>
+                <div class="gallery">
+                    <div class="gallery-item">
+                        <div style="display:flex; flex-wrap:wrap; gap:20px">
+                            {% for f in files %}
+                            {% if f.category == c %}
+                            <div style="border: 1px solid black; padding:10px">
+                                <p>{{f.title}}</p>
+                                <img src="{{f.file.url}}" width="150" />
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
                 </div>
-                {% endif %}
-                {% endfor %}
             </div>
-        </div>
+        </a>
+        {% endfor %}
     </div>
-    {% endfor %}
 </body>
 </html>

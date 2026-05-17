@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>{{ category.name }}</title>
+</head>
+
+<body>
+
+    <h1>{{ category.name }}</h1>
+
+    <div style="display:flex; flex-wrap:wrap; gap:20px;">
+
+        {% for f in files %}
+
+        <div style="
+            border:1px solid gray;
+            width:400px;
+            padding:20px;
+        ">
+
+            <img src="{{ f.file.url }}"
+                 width="350">
+
+            <div style="
+                display:flex;
+                justify-content:space-between;
+                align-items:center;
+                margin-top:20px;
+            ">
+
+                <p>{{ f.title }}</p>
+
+                <div>
+
+                    <a href="{% url 'edit_file' f.id %}"
+                       style="
+           border:1px solid black;
+           padding:5px 10px;
+           text-decoration:none;
+           color:black;
+           background-color:lightgray;
+           margin-right:5px;">Edit</a>
+
+                    <form method="POST"
+                          action="{% url 'delete_file' f.id %}"
+                          style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit">
+                            Delete
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</body>
+</html>

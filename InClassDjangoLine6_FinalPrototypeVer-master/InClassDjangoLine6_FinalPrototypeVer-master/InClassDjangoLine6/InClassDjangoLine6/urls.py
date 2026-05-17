@@ -37,7 +37,10 @@ urlpatterns = [
     path('register', account.views.register_view, name='register'),
     path('upload', MyApp1.views.upload_file, name='upload'),
     path('report/', MyApp1.views.report, name="report"),
-    path('about', MyApp1.views.about_view, name="about")
+    path('about', MyApp1.views.about_view, name="about"),
+    path('category/<int:id>/', MyApp1.views.category_view, name='category'),
+    path('delete/<int:id>/', MyApp1.views.delete_file, name='delete_file'),
+    path('edit/<int:id>/', MyApp1.views.edit_file, name='edit_file'),
 ] 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

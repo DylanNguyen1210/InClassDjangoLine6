@@ -31,6 +31,52 @@ def home(request):
     return render(request, "MyApp1/home.html", { 'category': category, 'files':files})
 
 @login_required
+def category_view(request, id):
+
+    category = Category.objects.get(id=id)
+
+    files = UploadFile.objects.filter(
+        category=category,
+        user=request.user
+    )
+
+    return render(request, "category.html", {
+        'category': category,
+        'files': files
+    })
+
+@login_required
+def delete_file(request, id):
+    file = UploadFile.objects.get(
+        id=id,
+        user=request.user
+    )
+    file.delete()
+    return redirect('category', id=file.category.id)
+
+@login_required
+def edit_file(request, id):
+    file = UploadFile.objects.get(
+        id=id,
+        user=request.user
+    )
+    if request.method == "POST":
+        form = UploadFileForm(
+            request.POST,
+            request.FILES,
+            instance=file
+        )
+        if form.is_valid():
+            form.save()
+            return redirect(
+                'category',
+                id=file.category.id
+            )
+    else:
+        form = UploadFileForm(instance=file)
+    return render(request,"MyApp1/edit.html",{'form': form})
+
+@login_required
 def input_view(request):
     if request.method == "POST":
         form = InputForm(request.POST)
